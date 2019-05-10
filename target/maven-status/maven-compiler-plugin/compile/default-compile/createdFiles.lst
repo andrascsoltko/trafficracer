@@ -8,3 +8,4 @@ Model\tbl_user.class
 Controller\AnimatedImages.class
 Model\dbFunctions.class
 Controller\MenuController.class
+Model\tbl_score.class
