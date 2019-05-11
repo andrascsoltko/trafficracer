@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.dbFunctions;
 import javafx.animation.AnimationTimer;
 
 import javafx.event.ActionEvent;
@@ -51,17 +52,27 @@ public class GameController implements Initializable {
 
 
 
-    static ArrayList<String> input;
+    private static ArrayList<String> input;
 
-    static Image carImg;
-    static Image obstacleImg;
+    private static Image carImg;
+    private static Image obstacleImg;
 
-    static ImagePattern carPattern;
-    static ImagePattern obstaclePattern;
+    private static ImagePattern carPattern;
+    private static ImagePattern obstaclePattern;
+
+    private static int score = 0;
 
 
 
-    static double velocity = 10;
+    private static String playerName;
+
+    private static double velocity = 10;
+
+    void initdata(String playerName) {
+        GameController.playerName = playerName;
+
+        //System.out.println(playerName);
+    }
 
 
     @Override
@@ -81,7 +92,7 @@ public class GameController implements Initializable {
 
 
 
-        input = new ArrayList<String>();
+        input = new ArrayList<>();
 
 
         carRectangle.setOnKeyPressed(
@@ -126,9 +137,12 @@ public class GameController implements Initializable {
 
                     double t = (currentNanoTime - startNanoTime) / 1000000000.0;
 
+                    score = (int) (t *10);
 
 
-                    scoreLBL.setText("Score:" + ((int) t) * 10);
+
+                    scoreLBL.setText("Score:" + score);
+
 
 
                     gc.drawImage(road.getFrame(t), 0, 0);
@@ -173,8 +187,9 @@ public class GameController implements Initializable {
 
 
                     if(collosionDetection(carRectangle, obstacle)){
-                        gameOverLable.setText("GAME OVER");
                         this.stop();
+                        gameOverLable.setText("GAME OVER");
+                        dbFunctions.saveScore(playerName,score);
                         btnBack.setVisible(true);
 
                     }
@@ -189,7 +204,7 @@ public class GameController implements Initializable {
 
     }
 
-    public boolean collosionDetection(Rectangle rect1, Rectangle rect2){
+    private boolean collosionDetection(Rectangle rect1, Rectangle rect2){
 
         if(
                 rect1.getX()+ rect1.getWidth() >= rect2.getX() &&
@@ -212,7 +227,7 @@ public class GameController implements Initializable {
     public void backToMenu(ActionEvent actionEvent)throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
         Parent root = fxmlLoader.load();
-
+        fxmlLoader.<MenuController>getController().initdata(playerName);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setTitle("TrafficRacer - Menu");

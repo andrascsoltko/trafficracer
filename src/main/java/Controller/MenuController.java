@@ -18,50 +18,59 @@ public class MenuController {
     @FXML
     private Label lblUsername;
 
-    private String userName;
+    private String playerName;
 
 
-    public void initdata(String userName) {
-        this.userName = userName;
-        lblUsername.setText("Welcome " + this.userName + "!");
+    public void initdata(String playerName) {
+        this.playerName = playerName;
+        lblUsername.setText(playerName);
+
+
     }
 
 
     //----------------------------LOGOUT SEQUENCE--------------------------------------------------------------------------------
-    public void logOut(ActionEvent actionEvent) throws IOException {
+    public void logOut(ActionEvent actionEvent) throws Exception {
 
-        try {
-            //----------------------------BACK TO LOGIN SCENE--------------------------------------------------------------------------------
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/launch.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setTitle("TrafficRacer - Login");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.show();
-        }catch (Exception ex){
-
-        }
+        //----------------------------BACK TO LOGIN SCENE--------------------------------------------------------------------------------
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/launch.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("TrafficRacer - Login");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
 
 
     }
     //----------------------------GAME START--------------------------------------------------------------------------------
-    public void playButton(ActionEvent actionEvent)throws Exception{
+    public void playButton(ActionEvent actionEvent)throws Exception, IOException {
 
-        try {
-//----------------------------GAME SCENE INIT--------------------------------------------------------------------------------
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/game.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setTitle("TrafficRacer - Game");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.show();
+        //----------------------------GAME SCENE INIT--------------------------------------------------------------------------------
 
-        }catch (Exception ex){
-            System.out.println(ex);
-            System.out.println("szaaar");
-            throw ex;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
+        Parent root = fxmlLoader.load();
+        fxmlLoader.<GameController>getController().initdata(lblUsername.getText());
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("TrafficRacer - Game");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
 
-        }
+    }
+
+    public void getHighScores(ActionEvent actionEvent)throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/scores.fxml"));
+        Parent root = fxmlLoader.load();
+
+        fxmlLoader.<ScoreBoardController>getController().initdata(lblUsername.getText());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("TrafficRacer - ScoreBoard");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
+
+
     }
 
 
