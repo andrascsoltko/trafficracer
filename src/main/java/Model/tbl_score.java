@@ -9,11 +9,19 @@ public class tbl_score {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userID;
 
+
+    /**
+    * The username of the player.
+    * */
     @Column(name = "userName")
     private String username;
-
+    /**
+     * The achieved score of the player.
+     * */
     @Column(name = "Score")
     private int score;
+
+
 
     public tbl_score(String username, int score){
         this.username = username;

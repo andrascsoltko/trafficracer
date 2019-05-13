@@ -20,7 +20,9 @@ public class MenuController {
 
     private String playerName;
 
-
+    /**
+     * Receives the username of the player from previous scene.
+     * */
     public void initdata(String playerName) {
         this.playerName = playerName;
         lblUsername.setText(playerName);
@@ -29,7 +31,9 @@ public class MenuController {
     }
 
 
-    //----------------------------LOGOUT SEQUENCE--------------------------------------------------------------------------------
+    /**
+     * Returns to the opening scene of the application.
+     * */
     public void logOut(ActionEvent actionEvent) throws Exception {
 
         //----------------------------BACK TO LOGIN SCENE--------------------------------------------------------------------------------
@@ -42,10 +46,11 @@ public class MenuController {
 
 
     }
-    //----------------------------GAME START--------------------------------------------------------------------------------
-    public void playButton(ActionEvent actionEvent)throws Exception, IOException {
+    /**
+     * Start the game sequence.
+     * */
+    public void playButton(ActionEvent actionEvent)throws Exception {
 
-        //----------------------------GAME SCENE INIT--------------------------------------------------------------------------------
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
         Parent root = fxmlLoader.load();
@@ -58,6 +63,9 @@ public class MenuController {
 
     }
 
+    /**
+     * Opens the high scores view.
+     * */
     public void getHighScores(ActionEvent actionEvent)throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/scores.fxml"));
         Parent root = fxmlLoader.load();

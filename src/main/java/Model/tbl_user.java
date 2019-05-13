@@ -9,9 +9,15 @@ public class tbl_user {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userID;
 
+    /**
+     * The username of the player.
+     * */
     @Column(name = "userName")
     private String username;
 
+    /**
+     * The password of the user.
+     * */
     @Column(name = "userPassword")
     private String password;
 

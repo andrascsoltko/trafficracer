@@ -35,11 +35,16 @@ public class ScoreBoardController {
 
     private static ArrayList<tbl_score> scores = new ArrayList<>();
 
+    /**
+     * Receives the username of the player from previous scene.
+     * */
     void initdata(String userName) {
         this.playerName = userName;
     }
 
-
+    /**
+     * Leads back to the menu scene.
+     * */
     public void backToMenu(ActionEvent actionEvent)throws Exception{
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
@@ -53,6 +58,9 @@ public class ScoreBoardController {
 
     }
 
+    /**
+     * Loads the data to the fxml table view.
+     * */
     public void initialize(){
 
         scores = dbFunctions.getScores();

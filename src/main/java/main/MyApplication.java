@@ -12,6 +12,7 @@ import javafx.stage.WindowEvent;
 
 import java.io.File;
 
+
 public class MyApplication extends Application {
 
     Media sound;
@@ -20,16 +21,16 @@ public class MyApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-//----------------------------DB CONNECTION INIT------------------------------------------------------------------------
+
         dbFunctions.DBInit();
 
-//----------------------------MUSIC PLAYER------------------------------------------------------------------------------
+
         String musicFile = "src\\main\\resources\\songs\\music.mp3";
         sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setVolume(0.05);
         mediaPlayer.play();
-//----------------------------MAIN SCENE--------------------------------------------------------------------------------
+
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/launch.fxml"));
         primaryStage.setTitle("TrafficRacer - Login");
         primaryStage.setResizable(false);
@@ -37,7 +38,7 @@ public class MyApplication extends Application {
         primaryStage.show();
 
 
-//----------------------------DB CONNECTION DISPOSE---------------------------------------------------------------------
+
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
                 dbFunctions.Dispose();

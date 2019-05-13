@@ -68,13 +68,20 @@ public class GameController implements Initializable {
 
     private static double velocity = 10;
 
+    /**
+     * Receives the username of the player from previous scene.
+     * */
     void initdata(String playerName) {
         GameController.playerName = playerName;
 
         //System.out.println(playerName);
     }
 
-
+    /**
+     * Hearth of the game.
+     * Frame based background animation to get the illusion of an endless road, uses {@link AnimatedImages}.
+     * Handles player movement with keyListeners.
+     * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -114,8 +121,6 @@ public class GameController implements Initializable {
 
 
         GraphicsContext gc = playGroundCanvas.getGraphicsContext2D();
-
-
 
         AnimatedImages road = new AnimatedImages();
 
@@ -204,6 +209,9 @@ public class GameController implements Initializable {
 
     }
 
+   /**
+    * Checks whether the two rectangles are touching, returning a boolean value.
+    * */
     public boolean collosionDetection(Rectangle rect1, Rectangle rect2){
 
         return rect1.getX() + rect1.getWidth() >= rect2.getX() &&
@@ -215,6 +223,9 @@ public class GameController implements Initializable {
 
     }
 
+    /**
+     * Back to menu button, swaps the scene to the menu scene.
+     * */
     public void backToMenu(ActionEvent actionEvent)throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
         Parent root = fxmlLoader.load();

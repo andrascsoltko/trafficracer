@@ -10,16 +10,28 @@ public class dbFunctions {
     private static EntityManager em;
 
 
+    /**
+     * Database connection initializer.
+     * Creates the persistence database connection.
+     * */
     public static void DBInit(){
         emf = Persistence.createEntityManagerFactory("jpa-persistence-unit-1");
         em = emf.createEntityManager();
     }
 
+    /**
+     * Database connection closer.
+     * Gets called by a stage.setOnCloseRequest, closes the database connection.
+     * */
     public static void Dispose(){
         em.close();
         emf.close();
     }
 
+    /**
+     * Authentication sequence.
+     * Tries to select data by given parameters.
+     * */
     public static tbl_user loginUser(String username, String password) throws NoResultException {
 
         TypedQuery<tbl_user> loginQuery = em.createQuery(
@@ -31,6 +43,10 @@ public class dbFunctions {
         return null;
     }
 
+    /**
+     * Registration sequence.
+     * Initialises a new transaction, and creates a new account with the given parameters.
+     * */
     public static void registerUser(String username, String password) {
 
         tbl_user newUser = new tbl_user(username, password);
@@ -44,6 +60,9 @@ public class dbFunctions {
         }
     }
 
+    /**
+     * Initialises a new transaction, saves the achieved score.
+     * */
     public static void saveScore(String username, int score){
 
         tbl_score newScore = new tbl_score(username, score);
@@ -59,13 +78,15 @@ public class dbFunctions {
 
     }
 
+    /**
+     * Pulls the values from the Scores object into a list for filling the HighScores view.
+     * */
     public static ArrayList<tbl_score> getScores(){
 
         TypedQuery<tbl_score> topTenQuery = em.createQuery(
                "SELECT s FROM tbl_score s ORDER BY s.score DESC",tbl_score.class);
-        ArrayList<tbl_score> result = new ArrayList<>(topTenQuery.getResultList());
 
-        return result;
+        return new ArrayList<>(topTenQuery.getResultList());
 
 
     }

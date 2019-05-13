@@ -26,12 +26,14 @@ public class LaunchController {
 
     @FXML
     private Label lblStatus;
-//----------------------------LOGIN FUNCTION--------------------------------------------------------------------------------
-    public void startLogin(ActionEvent actionEvent) throws IOException {
+
+    /**
+     * Initialises the login sequence.
+     * */
+    public void startLogin(ActionEvent actionEvent) {
 
 
         try {
-//----------------------------LOGIN SEQUENCE INIT-----------------------------------------------------------------------
 
 
             if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()){
@@ -57,17 +59,19 @@ public class LaunchController {
 
         }
         catch (NoResultException ex) {
-//----------------------------LOGIN FAILED------------------------------------------------------------------------------
             lblStatus.setText("Login Failed");
             lblStatus.setTextFill(Color.RED);
 
 
         }catch (Exception ex){
             System.out.println(ex);
-            System.out.println("buzi");
+
         }
     }
 
+    /**
+     * Initialises the registration.
+     * */
     public void startRegister(){
 
         try {

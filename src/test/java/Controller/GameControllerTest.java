@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GameControllerTest {
+public class GameControllerTest {
 
     private Rectangle rect1;
 
