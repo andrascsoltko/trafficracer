@@ -14,8 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.persistence.NoResultException;
-import java.io.IOException;
-
+import org.tinylog.Logger;
 public class LaunchController {
 
     @FXML
@@ -32,7 +31,7 @@ public class LaunchController {
      * */
     public void startLogin(ActionEvent actionEvent) {
 
-
+        Logger.debug("startLogin pressed");
         try {
 
 
@@ -64,6 +63,7 @@ public class LaunchController {
 
 
         }catch (Exception ex){
+
             System.out.println(ex);
 
         }
