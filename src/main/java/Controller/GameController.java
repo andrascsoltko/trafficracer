@@ -204,21 +204,12 @@ public class GameController implements Initializable {
 
     }
 
-    private boolean collosionDetection(Rectangle rect1, Rectangle rect2){
+    public boolean collosionDetection(Rectangle rect1, Rectangle rect2){
 
-        if(
-                rect1.getX()+ rect1.getWidth() >= rect2.getX() &&
-                        rect1.getX() <= (rect2.getX()+rect2.getWidth()) &&
-                        rect1.getY() + rect1.getHeight() >= rect2.getY() &&
-                        rect1.getY() <= rect2.getY() +rect2.getHeight()
-        ){
-            System.out.println("balek");
-            return true;
-        }
-        else {
-            //System.out.println("faszacsavo");
-            return false;
-        }
+        return rect1.getX() + rect1.getWidth() >= rect2.getX() &&
+                rect1.getX() <= (rect2.getX() + rect2.getWidth()) &&
+                rect1.getY() + rect1.getHeight() >= rect2.getY() &&
+                rect1.getY() <= rect2.getY() + rect2.getHeight();
 
 
 

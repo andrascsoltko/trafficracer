@@ -21,6 +21,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="219.0" layoutY="212.0" mnemonicParsing="false" onAction="#getHighScores" prefHeight="92.0" prefWidth="117.0" text="HighScores" />
+      <Button layoutX="14.0" layoutY="168.0" mnemonicParsing="false" onAction="#getHighScores" prefHeight="92.0" prefWidth="117.0" text="HighScores" />
 
 </AnchorPane>
