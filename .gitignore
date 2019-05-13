@@ -1,0 +1,8 @@
+*.iml
+**/target/
+!.gitignore
+!.git/
+.idea/**
+.attach*
+logs/
+db.properties
