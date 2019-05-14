@@ -2,12 +2,10 @@ package Controller;
 
 import Model.dbFunctions;
 import javafx.animation.AnimationTimer;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,14 +18,15 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
 import java.net.URL;
-
 import java.util.ArrayList;
-
 import java.util.ResourceBundle;
 
+
+/**
+ * Hearth of the Game.
+ * */
 public class GameController implements Initializable {
 
 
@@ -122,6 +121,7 @@ public class GameController implements Initializable {
 
         GraphicsContext gc = playGroundCanvas.getGraphicsContext2D();
 
+
         AnimatedImages road = new AnimatedImages();
 
         Image[] imageArray = new Image[4];
@@ -211,6 +211,9 @@ public class GameController implements Initializable {
 
    /**
     * Checks whether the two rectangles are touching, returning a boolean value.
+    * @return true if they collide, false if they don't.
+    * @param rect1 is the car rectangle.
+    * @param rect2 is the obstacle rectangle.
     * */
     public boolean collosionDetection(Rectangle rect1, Rectangle rect2){
 
@@ -225,6 +228,8 @@ public class GameController implements Initializable {
 
     /**
      * Back to menu button, swaps the scene to the menu scene.
+     * @param actionEvent triggering the method.
+     * @throws IOException if and Input or Output method failed or interpreted.
      * */
     public void backToMenu(ActionEvent actionEvent)throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));

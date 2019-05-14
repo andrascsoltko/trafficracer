@@ -15,10 +15,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-
 import java.util.ArrayList;
 
-
+/**
+ * ScoreBoard view.
+ * */
 public class ScoreBoardController {
 
     @FXML
@@ -37,6 +38,7 @@ public class ScoreBoardController {
 
     /**
      * Receives the username of the player from previous scene.
+     * @param userName is the current user.
      * */
     void initdata(String userName) {
         this.playerName = userName;
@@ -44,6 +46,8 @@ public class ScoreBoardController {
 
     /**
      * Leads back to the menu scene.
+     * @param actionEvent triggers the method.
+     * @throws Exception in case something fails.
      * */
     public void backToMenu(ActionEvent actionEvent)throws Exception{
 

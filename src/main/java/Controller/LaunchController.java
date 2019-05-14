@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.*;
+import Model.dbFunctions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +12,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.tinylog.Logger;
 
 import javax.persistence.NoResultException;
-import org.tinylog.Logger;
+
+/**
+ * The login scene.
+ * */
 public class LaunchController {
 
     @FXML
@@ -28,10 +32,11 @@ public class LaunchController {
 
     /**
      * Initialises the login sequence.
+     * @param actionEvent triggers the method.
      * */
     public void startLogin(ActionEvent actionEvent) {
 
-        Logger.debug("startLogin pressed");
+        Logger.info("startLogin pressed");
         try {
 
 
@@ -74,18 +79,22 @@ public class LaunchController {
      * */
     public void startRegister(){
 
+        Logger.info("startRegister pressed");
         try {
             if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()){
                 lblStatus.setText("Username/password is empty!");
                 lblStatus.setTextFill(Color.RED);
+                Logger.info("Registration failed");
             }else {
                 dbFunctions.registerUser(txtUsername.getText(), txtPassword.getText());
                 lblStatus.setText("Registration Successful");
                 lblStatus.setTextFill(Color.GREEN);
+                Logger.info("Registration Successful");
             }
         } catch (Exception ex){
             lblStatus.setText("Username Already Taken");
             lblStatus.setTextFill(Color.RED);
+            Logger.info("Registration failed");
         }
     }
 }

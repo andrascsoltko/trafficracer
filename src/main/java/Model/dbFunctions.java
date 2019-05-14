@@ -2,8 +2,11 @@ package Model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
 
+
+/**
+ * Everything related to database are happening here.
+ * */
 public class dbFunctions {
 
     private static EntityManagerFactory emf;
@@ -31,6 +34,10 @@ public class dbFunctions {
     /**
      * Authentication sequence.
      * Tries to select data by given parameters.
+     * @param username is the username of the user.
+     * @param password is the password of the user.
+     * @return is null, because
+     * @throws NoResultException solves login issues for us.
      * */
     public static tbl_user loginUser(String username, String password) throws NoResultException {
 
@@ -45,7 +52,9 @@ public class dbFunctions {
 
     /**
      * Registration sequence.
-     * Initialises a new transaction, and creates a new account with the given parameters.
+     * Initialises a new transaction, and creates a new account with the given parameters:
+     * @param username the username of the user and
+     * @param password password of the user.
      * */
     public static void registerUser(String username, String password) {
 
@@ -62,6 +71,8 @@ public class dbFunctions {
 
     /**
      * Initialises a new transaction, saves the achieved score.
+     * @param username to associate the score with the player.
+     * @param score the achieved score.
      * */
     public static void saveScore(String username, int score){
 
@@ -80,6 +91,7 @@ public class dbFunctions {
 
     /**
      * Pulls the values from the Scores object into a list for filling the HighScores view.
+     * @return the list of scores in a descending order.
      * */
     public static ArrayList<tbl_score> getScores(){
 

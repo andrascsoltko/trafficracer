@@ -9,10 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 
 
-
+/**
+ * Menu scene.
+ * */
 public class MenuController {
 
     @FXML
@@ -22,6 +23,7 @@ public class MenuController {
 
     /**
      * Receives the username of the player from previous scene.
+     * @param playerName is the name of the current user.
      * */
     public void initdata(String playerName) {
         this.playerName = playerName;
@@ -33,6 +35,8 @@ public class MenuController {
 
     /**
      * Returns to the opening scene of the application.
+     * @param actionEvent triggers the method.
+     * @throws Exception in case something fails.
      * */
     public void logOut(ActionEvent actionEvent) throws Exception {
 
@@ -48,6 +52,8 @@ public class MenuController {
     }
     /**
      * Start the game sequence.
+     * @param actionEvent triggers the method.
+     * @throws Exception in case something fails.
      * */
     public void playButton(ActionEvent actionEvent)throws Exception {
 
@@ -65,6 +71,8 @@ public class MenuController {
 
     /**
      * Opens the high scores view.
+     * @param actionEvent triggers the method.
+     * @throws Exception in case something fails.
      * */
     public void getHighScores(ActionEvent actionEvent)throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/scores.fxml"));
