@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.tinylog.Logger;
 
 import java.io.IOException;
 import java.net.URL;
@@ -72,8 +73,7 @@ public class GameController implements Initializable {
      * */
     void initdata(String playerName) {
         GameController.playerName = playerName;
-
-        //System.out.println(playerName);
+        Logger.info("Recieved: "+ playerName);
     }
 
     /**
@@ -140,6 +140,7 @@ public class GameController implements Initializable {
             new AnimationTimer() {
                 public void handle(long currentNanoTime) {
 
+
                     double t = (currentNanoTime - startNanoTime) / 1000000000.0;
 
                     score = (int) (t *10);
@@ -186,6 +187,7 @@ public class GameController implements Initializable {
 
                     if(input.contains("ESCAPE")){
                         gameOverLable.setText("GAME OVER");
+                        Logger.info("Player gave up.");
                         this.stop();
                         btnBack.setVisible(true);
                     }
@@ -193,6 +195,7 @@ public class GameController implements Initializable {
 
                     if(collosionDetection(carRectangle, obstacle)){
                         this.stop();
+                        Logger.info("Player crashed.");
                         gameOverLable.setText("GAME OVER");
                         dbFunctions.saveScore(playerName,score);
                         btnBack.setVisible(true);
@@ -216,6 +219,8 @@ public class GameController implements Initializable {
     * @param rect2 is the obstacle rectangle.
     * */
     public boolean collosionDetection(Rectangle rect1, Rectangle rect2){
+
+
 
         return rect1.getX() + rect1.getWidth() >= rect2.getX() &&
                 rect1.getX() <= (rect2.getX() + rect2.getWidth()) &&

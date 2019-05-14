@@ -1,5 +1,7 @@
 package Model;
 
+import org.tinylog.Logger;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 
@@ -20,6 +22,7 @@ public class dbFunctions {
     public static void DBInit(){
         emf = Persistence.createEntityManagerFactory("jpa-persistence-unit-1");
         em = emf.createEntityManager();
+        Logger.info("Database connection initialised and connected.");
     }
 
     /**
@@ -29,6 +32,7 @@ public class dbFunctions {
     public static void Dispose(){
         em.close();
         emf.close();
+        Logger.info("Database connection closed.");
     }
 
     /**
@@ -42,10 +46,11 @@ public class dbFunctions {
     public static tbl_user loginUser(String username, String password) throws NoResultException {
 
         TypedQuery<tbl_user> loginQuery = em.createQuery(
-                "SELECT tu FROM tbl_user tu WHERE tu.username ='" + username + "'AND tu.password='" + password + "'", tbl_user.class);
+                "SELECT tu FROM tbl_user tu WHERE tu.username = :username AND tu.password= :password", tbl_user.class)
+                .setParameter("username", username)
+                .setParameter("password", password);
 
-        System.out.println(loginQuery.getSingleResult());
-
+        Logger.info(loginQuery.getSingleResult());
 
         return null;
     }
@@ -63,8 +68,10 @@ public class dbFunctions {
             em.getTransaction().begin();
             em.persist(newUser);
             em.getTransaction().commit();
+            Logger.info("Created new user!");
         } catch (Exception ex) {
             em.getTransaction().rollback();
+            Logger.info(ex);
             throw ex;
         }
     }
@@ -81,9 +88,12 @@ public class dbFunctions {
             em.getTransaction().begin();
             em.persist(newScore);
             em.getTransaction().commit();
-            System.out.println("score saved");
+            Logger.info("Score saved");
+
         } catch (Exception ex){
             em.getTransaction().rollback();
+            Logger.info("Score saving failed.");
+            Logger.info(ex);
             throw ex;
         }
 
@@ -95,10 +105,11 @@ public class dbFunctions {
      * */
     public static ArrayList<tbl_score> getScores(){
 
-        TypedQuery<tbl_score> topTenQuery = em.createQuery(
+        TypedQuery<tbl_score> highscores = em.createQuery(
                "SELECT s FROM tbl_score s ORDER BY s.score DESC",tbl_score.class);
 
-        return new ArrayList<>(topTenQuery.getResultList());
+        Logger.info("Loaded high scores.");
+        return new ArrayList<>(highscores.getResultList());
 
 
     }

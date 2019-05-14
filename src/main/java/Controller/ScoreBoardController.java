@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.tinylog.Logger;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,7 @@ public class ScoreBoardController {
      * @param userName is the current user.
      * */
     void initdata(String userName) {
+        Logger.info("Recieved: "+ userName);
         this.playerName = userName;
     }
 
@@ -51,6 +53,7 @@ public class ScoreBoardController {
      * */
     public void backToMenu(ActionEvent actionEvent)throws Exception{
 
+        Logger.info("Leaving scores view.");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
         Parent root = fxmlLoader.load();
         fxmlLoader.<MenuController>getController().initdata(playerName);
@@ -67,6 +70,7 @@ public class ScoreBoardController {
      * */
     public void initialize(){
 
+        Logger.info("Scores loading.");
         scores = dbFunctions.getScores();
 
         userNameC.setCellValueFactory(new PropertyValueFactory<>("username"));

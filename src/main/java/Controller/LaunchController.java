@@ -36,19 +36,21 @@ public class LaunchController {
      * */
     public void startLogin(ActionEvent actionEvent) {
 
-        Logger.info("startLogin pressed");
+
         try {
 
 
             if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()){
                 lblStatus.setText("Username/password is empty!");
                 lblStatus.setTextFill(Color.RED);
+                Logger.info("Login Failed");
             }
             else{
                 dbFunctions.loginUser(txtUsername.getText(), txtPassword.getText());
 
                 lblStatus.setText("Login Successful");
                 lblStatus.setTextFill(Color.GREEN);
+                Logger.info("Login successful.");
 
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
                 Parent root = fxmlLoader.load();
@@ -65,11 +67,13 @@ public class LaunchController {
         catch (NoResultException ex) {
             lblStatus.setText("Login Failed");
             lblStatus.setTextFill(Color.RED);
+            Logger.info("Login failed:");
+            Logger.info(ex);
 
 
         }catch (Exception ex){
 
-            System.out.println(ex);
+           Logger.info(ex);
 
         }
     }
@@ -95,6 +99,7 @@ public class LaunchController {
             lblStatus.setText("Username Already Taken");
             lblStatus.setTextFill(Color.RED);
             Logger.info("Registration failed");
+            Logger.info(ex);
         }
     }
 }
