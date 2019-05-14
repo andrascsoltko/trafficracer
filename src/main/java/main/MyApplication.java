@@ -5,18 +5,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import java.io.File;
 
 
 public class MyApplication extends Application {
 
-    Media sound;
-    MediaPlayer mediaPlayer;
 
 
     @Override
@@ -24,12 +20,6 @@ public class MyApplication extends Application {
 
         dbFunctions.DBInit();
 
-
-        String musicFile = "src\\main\\resources\\songs\\music.mp3";
-        sound = new Media(new File(musicFile).toURI().toString());
-        mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.setVolume(0.05);
-        mediaPlayer.play();
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/launch.fxml"));
         primaryStage.setTitle("TrafficRacer - Login");
