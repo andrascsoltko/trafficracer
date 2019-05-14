@@ -7,20 +7,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
 
         <ImageView fitHeight="429.0" fitWidth="600.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
 
-                <Image url="@../Images/menuBG.jpg" />
+                <Image url="@../Images/background.png" />
 
         </ImageView>
-        <Button layoutX="269.0" layoutY="361.0" mnemonicParsing="false" onAction="#logOut" text="Logout" />
-        <Button layoutX="14.0" layoutY="62.0" mnemonicParsing="false" onAction="#playButton" prefHeight="62.0" prefWidth="117.0" text="PLAY" />
+        <Button layoutX="62.0" layoutY="302.0" mnemonicParsing="false" onAction="#logOut" text="Logout" />
+        <Button layoutX="37.0" layoutY="53.0" mnemonicParsing="false" onAction="#playButton" prefHeight="62.0" prefWidth="117.0" text="PLAY" />
       <Label fx:id="lblUsername" alignment="CENTER" cache="true" cacheHint="SCALE" layoutX="168.0" layoutY="14.0" prefHeight="39.0" prefWidth="335.0" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="168.0" mnemonicParsing="false" onAction="#getHighScores" prefHeight="92.0" prefWidth="117.0" text="HighScores" />
+      <Button layoutX="37.0" layoutY="169.0" mnemonicParsing="false" onAction="#getHighScores" prefHeight="62.0" prefWidth="117.0" text="HighScores" />
 
 </AnchorPane>

@@ -9,19 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LaunchController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LaunchController">
     <children>
         <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../Images/background.jpeg" />
+                <Image url="@../Images/bg1.png" />
             </image>
         </ImageView>
-        <ImageView blendMode="MULTIPLY" fitHeight="400.0" fitWidth="337.0" layoutX="26.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../Images/carcrash.jpg" />
-            </image>
-        </ImageView>
-        <AnchorPane layoutX="363.0" layoutY="50.0" prefHeight="300.0" prefWidth="210.0" style="-fx-background-color: #13313F;">
+        <AnchorPane layoutX="369.0" layoutY="50.0" prefHeight="300.0" prefWidth="210.0" style="-fx-background-color: #13313F;">
             <children>
                 <Label layoutX="37.0" layoutY="27.0" prefHeight="23.0" prefWidth="137.0" text="Sign In / Up" textFill="WHITE">
                     <font>
