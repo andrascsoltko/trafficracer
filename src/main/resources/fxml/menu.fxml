@@ -11,16 +11,16 @@
 
         <ImageView fitHeight="429.0" fitWidth="600.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
 
-                <Image url="@../Images/background.png" />
+                <Image url="@../Images/bg.png" />
 
         </ImageView>
-        <Button layoutX="62.0" layoutY="302.0" mnemonicParsing="false" onAction="#logOut" text="Logout" />
-        <Button layoutX="37.0" layoutY="53.0" mnemonicParsing="false" onAction="#playButton" prefHeight="62.0" prefWidth="117.0" text="PLAY" />
+        <Button layoutX="383.0" layoutY="301.0" mnemonicParsing="false" onAction="#logOut" text="Logout" />
+        <Button layoutX="351.0" layoutY="66.0" mnemonicParsing="false" onAction="#playButton" prefHeight="62.0" prefWidth="117.0" text="PLAY" />
       <Label fx:id="lblUsername" alignment="CENTER" cache="true" cacheHint="SCALE" layoutX="168.0" layoutY="14.0" prefHeight="39.0" prefWidth="335.0" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="37.0" layoutY="169.0" mnemonicParsing="false" onAction="#getHighScores" prefHeight="62.0" prefWidth="117.0" text="HighScores" />
+      <Button layoutX="351.0" layoutY="184.0" mnemonicParsing="false" onAction="#getHighScores" prefHeight="62.0" prefWidth="117.0" text="HighScores" />
 
 </AnchorPane>
